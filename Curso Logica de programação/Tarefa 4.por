@@ -15,7 +15,9 @@ programa
 			enquanto (tp.cadeia_e_inteiro(verificador, 10) == falso){
 			escreva("O numero que você digitou foi invalido \nInsira um numero inteiro:\n")
 			leia(verificador)
-			}
+			} 
+
+			
 			saldo = tp.cadeia_para_inteiro(verificador, 10)
 			
 			escreva("Qual é o Valor do cheque que deseja descontar?\n")
@@ -48,7 +50,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 860; 
+ * @POSICAO-CURSOR = 388; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
