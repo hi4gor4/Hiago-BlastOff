@@ -15,7 +15,7 @@ programa
 			
 			escreva("Qual foi a sua quilometragem na saida?\n")
 			leia(verificador)
-			enquanto (tp.cadeia_e_inteiro(verificador, 10) == falso){
+			enquanto (nao tp.cadeia_e_inteiro(verificador, 10) ){
 			escreva("O numero que você digitou foi invalido \nInsira um numero inteiro:\n")
 			leia(verificador)
 			}
@@ -23,7 +23,7 @@ programa
 			
 			escreva("Qual foi a sua quilometragem na chegada?\n")
 			leia(verificador)
-			enquanto (tp.cadeia_e_inteiro(verificador, 10) == falso){
+			enquanto (nao tp.cadeia_e_inteiro(verificador, 10) ){
 			escreva("O numero que você digitou foi invalido \nInsira um numero inteiro:\n")
 			leia(verificador)
 			}
@@ -34,7 +34,7 @@ programa
 				trajeto = km_chegada - km_saida
 				escreva("Qual foi a quantidade de  gasolina usada na viagem?\n")
 				leia(verificador)
-				enquanto (tp.cadeia_e_real(verificador) == falso e tp.cadeia_para_real(verificador) > 0){
+				enquanto (nao tp.cadeia_e_real(verificador) e tp.cadeia_para_real(verificador) > 0){
 					escreva("O numero que você digitou foi invalido \nInsira um numero real:\n")
 					leia(verificador)
 				}
@@ -44,9 +44,8 @@ programa
 
 				escreva("para fazer outra viagem tecle 1, ou qualquer outra para sair\n\n")
 				leia(verificador)
-				se(verificador != "1"){
-					a= falso
-				}
+				a = verificador == "1"
+
 				
 			}
 			
@@ -58,7 +57,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1379; 
+ * @POSICAO-CURSOR = 10; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

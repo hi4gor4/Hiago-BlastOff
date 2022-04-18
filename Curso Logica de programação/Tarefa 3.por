@@ -15,7 +15,7 @@ programa
 			
 			escreva("Qual é o seu salario?\n")
 			leia(verificador)
-			enquanto (tp.cadeia_e_inteiro(verificador, 10) == falso){
+			enquanto (nao tp.cadeia_e_inteiro(verificador, 10)){
 			escreva("O numero que você digitou foi invalido \nInsira um numero inteiro:\n")
 			leia(verificador)
 			}
@@ -23,7 +23,7 @@ programa
 			
 			escreva("Qual é o Valor que deseja financiar?\n")
 			leia(verificador)
-			enquanto (tp.cadeia_e_inteiro(verificador, 10) == falso){
+			enquanto (nao tp.cadeia_e_inteiro(verificador, 10) ){
 			escreva("O numero que você digitou foi invalido \nInsira um numero inteiro:\n")
 			leia(verificador)
 			}
@@ -37,10 +37,7 @@ programa
 
 			escreva("para fazer outra consulta tecle 1, ou qualquer outra para sair\n\n")
 			leia(verificador)
-			se(verificador != "1"){
-				a= falso
-				
-			}
+			a = verificador == "1"
 			
 		}
 	}
@@ -51,7 +48,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 863; 
+ * @POSICAO-CURSOR = 1132; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
