@@ -1,0 +1,15 @@
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\bin\Debug\net6.0\stopWatch.exe
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\bin\Debug\net6.0\stopWatch.deps.json
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\bin\Debug\net6.0\stopWatch.runtimeconfig.json
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\bin\Debug\net6.0\stopWatch.dll
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\bin\Debug\net6.0\stopWatch.pdb
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\stopWatch.csproj.AssemblyReference.cache
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\stopWatch.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\stopWatch.AssemblyInfoInputs.cache
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\stopWatch.AssemblyInfo.cs
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\stopWatch.csproj.CoreCompileInputs.cache
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\stopWatch.dll
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\refint\stopWatch.dll
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\stopWatch.pdb
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\stopWatch.genruntimeconfig.cache
+C:\Users\hiago\Documents\Toodoo\blas\Hiago-BlastOff\Curso C#\Exemplos\stopWatch\obj\Debug\net6.0\ref\stopWatch.dll
