@@ -28,7 +28,7 @@ programa
 			leia(verificador)
 			}
 			financiamento = tp.cadeia_para_inteiro(verificador, 10)
-			se(financiamento >= salario*5){
+			se(financiamento <= salario*5){
 				escreva(nome,"o seu Financiamento foi concedido\n")
 			}senao{
 				escreva(nome,"o seu Financiamento Negado\n")
@@ -48,7 +48,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1132; 
+ * @POSICAO-CURSOR = 605; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
