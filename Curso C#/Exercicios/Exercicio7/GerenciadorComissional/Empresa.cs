@@ -45,20 +45,19 @@ namespace GerenciadorComissional
             return this.contadorComissional[num-1];
         }
 
-        public  string ToString(int num)
+        public  void printFaixa(short num)
         {
-            OrdenaFuncionarios();
-            string comissionadosFaixa = "";
-            int init=0 , fim = 0;
-            for(int i = 0; i<num; i++ ){
-                init  +=  this.contadorComissional[i];
+            if(verificaFaixa(num) >0){
+                Console.WriteLine("São eles:");
+                OrdenaFuncionarios();
+                int init=0 , fim = 0;
+                for(int i = 0; i<num-1; i++ ){
+                    init  +=  this.contadorComissional[i];
+                }
+                fim = init + contadorComissional[num-1];    
+                for(int i = init; i < fim; i++)
+                    Console.WriteLine(this.func[i].ToString());
             }
-            fim = init+ contadorComissional[num];
-            for(int i = init; i <= fim; i++){
-                comissionadosFaixa += this.func[init-1].ToString();
-                comissionadosFaixa += "\n";
-            }
-            return comissionadosFaixa;
         }
 
 

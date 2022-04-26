@@ -26,12 +26,12 @@ namespace GerenciadorComissional
                     case 2:
                         short optComissionados = verificaFaixa();
                         Console.WriteLine($"{emp.verificaFaixa(optComissionados)} recebem nessa faixa de preço");
-                        Console.WriteLine("São eles:");
-                        Console.WriteLine(emp.ToString(optComissionados));
+                        emp.printFaixa(optComissionados);
                         Console.ReadKey();
                         
                         break;
                     case 3:
+                        Console.Clear();
                         System.Environment.Exit(0);
                         break;
                     default:
@@ -65,7 +65,8 @@ namespace GerenciadorComissional
         static string validaNome(){
             string nome = " ";
             nome = Console.ReadLine();
-            if(nome == null){
+            if(nome == null | nome == ""){
+                Console.Clear();
                 Console.WriteLine("Favor insira um nome valido");
                 return validaNome();
             }

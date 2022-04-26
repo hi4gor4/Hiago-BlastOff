@@ -21,8 +21,9 @@ namespace RandonNumber{
                     Console.ReadKey();
                     Menu(aki);
                 }
+            }else{
+                System.Environment.Exit(0);
             }
-
         }
         static short HandleOptions(){
             Console.Clear();

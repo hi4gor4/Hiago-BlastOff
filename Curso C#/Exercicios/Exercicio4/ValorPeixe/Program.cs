@@ -60,6 +60,7 @@ namespace ValorPeixe
             }
             Console.WriteLine("Aperte qualquer tecla para continuar");
             Console.ReadKey();
+            selectOptions(px);
         }
     }
 }

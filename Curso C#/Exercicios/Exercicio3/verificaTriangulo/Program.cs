@@ -31,6 +31,7 @@
             if(seletor == 1){
                 Menu();
             }else{
+                Console.Clear();
                 System.Environment.Exit(0);
             }
             

@@ -36,6 +36,8 @@ namespace StopWatch
                     Menu();
                 }
               
+            }else{
+                System.Environment.Exit(0);
             }
             static void SeparaNumero(string num){
                 switch(num.Length)

@@ -41,6 +41,7 @@
                 Menu();
             }
             if(seletor ==1)
+                Console.Clear();
                 System.Environment.Exit(0);
             Menu();
         }
@@ -54,7 +55,7 @@
                 Console.ReadKey();
                 return RegistraNome();
             }
-            if(nome == null){
+            if(nome == null || nome==""){
                 Console.WriteLine("Impossivel definir seu nome, aperte qualquer tecla para tentar novamente");
                 Console.ReadKey();
                 return RegistraNome();
