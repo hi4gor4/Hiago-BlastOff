@@ -1,0 +1,8 @@
+namespace MyApp{
+    public sealed class Pagamento// não pode ser extendida, para que não tenha classes derivadas a partir dela
+    {
+        // nenhum outro tipo de classe que herde as caracecteristicas da sua classe
+    }
+
+
+}
