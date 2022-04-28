@@ -1,5 +1,5 @@
 namespace Balta.ContentContext{
-    public class CareerItem
+    public class CareerItem: Base
     {
         public CareerItem(int order, string title, string description, Course course)
         {
