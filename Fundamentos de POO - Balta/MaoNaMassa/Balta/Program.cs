@@ -1,5 +1,6 @@
 ﻿using System;
 using Balta.ContentContext;
+using SubscriptionContext;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
@@ -35,6 +36,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 foreach(var item in career.Items.OrderBy(x => x.Order)){
                     Console.WriteLine($"{item.Title} {item.Order}");
                 }
+                 var payPalSubscription = new Subscription();
+                var student = new Student();
 
             }
         }

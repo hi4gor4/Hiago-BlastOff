@@ -1,6 +1,7 @@
 
 using System.Runtime.InteropServices;
 using Balta.NotificationContext;
+using Balta.SharedContext;
 
 namespace Balta.ContentContext
 {
