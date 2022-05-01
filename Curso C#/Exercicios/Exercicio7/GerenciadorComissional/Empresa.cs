@@ -39,7 +39,9 @@ namespace GerenciadorComissional
         }
 
         public  void OrdenaFuncionarios(){
-            func.OrderBy(x => x.GetComissao());
+            func = func.OrderBy(func => func.Comissao).ToList();
+            Console.WriteLine("Printando Funcionarios");
+            
         }
         public int verificaFaixa(short num){
             return this.contadorComissional[num-1];
@@ -54,7 +56,7 @@ namespace GerenciadorComissional
                 for(int i = 0; i<num-1; i++ ){
                     init  +=  this.contadorComissional[i];
                 }
-                fim = init + contadorComissional[num-1];    
+                fim = init + contadorComissional[num-1];             
                 for(int i = init; i < fim; i++)
                     Console.WriteLine(this.func[i].ToString());
             }

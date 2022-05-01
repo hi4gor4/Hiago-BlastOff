@@ -4,23 +4,21 @@ namespace GerenciadorComissional
 {
     internal class Funcionario
     {
-        private double comissao;
+        public double Comissao { get; set; }
         private string nome;
         public Funcionario(string nome, double comissao){
             this.nome = nome;
-            this.comissao = comissao;
+            this.Comissao = comissao;
         }
         public string GetNome(){
             return this.nome;
         }
 
-        public double GetComissao(){
-            return this.comissao;
-        }
+
 
         public override string ToString()
         {
-            return $"{this.nome}: {this.comissao}";
+            return $"{this.nome}: {this.Comissao}";
         }
     }
 }
