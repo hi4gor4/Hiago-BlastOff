@@ -7,7 +7,7 @@ namespace ValidaCPF // Note: actual namespace depends on the project name.
     {
         private Regex verificador ;
         public Validador(){
-            this.verificador = new Regex(@"^([0-9])([0-9])([0-9])[\.]([0-9])([0-9])([0-9])[\.]([0-9])([0-9])([0-9])-([0-9])([0-9])");
+            this.verificador = new Regex(@"^([0-9])([0-9])([0-9])[\.]([0-9])([0-9])([0-9])[\.]([0-9])([0-9])([0-9])-([0-9])([0-9])$");
         }    
         public bool validaFormato(string cpf){
             return this.verificador.IsMatch(cpf);

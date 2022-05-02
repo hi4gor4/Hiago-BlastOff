@@ -18,12 +18,12 @@ namespace CompeticaoSalto
         }
         public double getMelhorSalto(){
             Array.Sort(this.salto);
-            return this.salto[0];
+            return this.salto[4];
         }
  
         public double getPiorSalto(){
             Array.Sort(this.salto);
-            return this.salto[4];
+            return this.salto[0];
         }
 
         public  Saltador(string nome, double[] saltos){

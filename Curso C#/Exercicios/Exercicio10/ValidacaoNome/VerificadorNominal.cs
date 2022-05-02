@@ -6,7 +6,7 @@ namespace ValidaNome // Note: actual namespace depends on the project name.
     {
         private Regex reg;
         public VerificadorNominal(){
-            reg = new Regex(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇ]+$");
+            reg = new Regex(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇ]{2,}$");
         }
         public  bool ValidarNome(string nomeCompleto)
         {

@@ -45,6 +45,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 }
             }
             Menu();
+            
         }
         static double GetValidDouble(){
             double value = 0;

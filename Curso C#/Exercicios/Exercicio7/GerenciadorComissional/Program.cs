@@ -98,7 +98,7 @@ namespace GerenciadorComissional
             Console.Clear();
             for(int i = 1; i <=8;i++ )
                 Console.WriteLine($"Para verificar os comicionados que recebem {i+1}00 a {i+1}99 tecle     {i}");
-            Console.WriteLine("Para comissionados que recebem 1000 ou mais tecle                     9"); 
+            Console.WriteLine("Para comissionados que recebem 1000 ou mais tecle              9"); 
             short valor = validaOption();
             if(valor > 0 && valor <10){
                 return valor;
