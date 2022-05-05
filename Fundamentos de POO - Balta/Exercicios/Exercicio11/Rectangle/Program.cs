@@ -7,12 +7,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-
+            Menu();
         }
 
         static void Menu(){
             Console.Clear();
-            Console.WriteLine("Favor insira as medidas do local");
+            Console.WriteLine("Insira as medidas do local");
             Console.WriteLine("Favor insira o Comprimento do local");
             double length = GetValidDouble();
             Console.WriteLine("Favor Insira a Largura do local");
@@ -31,12 +31,21 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 selector = GetValidShort();
                 switch(selector){
                     case 1:
+                        Tile tile = RegisterTile();
+                        Console.Clear();
+                        Console.WriteLine($"Para colocar piso no local serão necessarios {floor.CalculateTilesNumber(tile)}");
+                        WaitUser();
                         break;
                     case 2:
+                        BaseBoard baseboard = RegisterBaseboard();
+                        Console.Clear();
+                        Console.WriteLine($"Para colocar o rodape nessa area sao necessarios {floor.CalculateBaseboard(baseboard)} ");
+                        WaitUser();
                         break;
                     case 3:
                         break;
                     case 4:
+                        Console.Clear();
                         System.Environment.Exit(0);
                         break;
                     default:
@@ -55,7 +64,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 NotifyInvalidValue();
                 return GetValidDouble();
             }
-            return value;
+            if(value>0){
+                return value;
+            }else{
+                NotifyInvalidValue();
+                return GetValidDouble();
+            }
         }
         static short GetValidShort(){
             short value = 0;
@@ -73,6 +87,27 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.ReadKey();
         }
 
+        static Tile RegisterTile(){
+            Console.Clear();
+            Console.WriteLine("Favor insira o cumprimento do piso");
+            double length = GetValidDouble();
+            Console.WriteLine("Favor Insira a Largura do piso");
+            double width = GetValidDouble();
+            return new Tile(length, width);
 
+        }
+        static BaseBoard RegisterBaseboard(){
+            Console.Clear();
+            Console.WriteLine("Favor insira o cumprimento do Rodapé");
+            double length = GetValidDouble();
+            return new BaseBoard(length);
+
+        }
+        
+        static void WaitUser()
+        {
+            Console.WriteLine("Pressione qualquer tecla para continuar");
+            Console.ReadKey();
+        }
     }
 }
