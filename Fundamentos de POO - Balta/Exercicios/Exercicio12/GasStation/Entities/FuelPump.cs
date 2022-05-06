@@ -1,3 +1,5 @@
+using FuelStationEnum;
+
 namespace FuelStation
 {
     public class FuelPump
