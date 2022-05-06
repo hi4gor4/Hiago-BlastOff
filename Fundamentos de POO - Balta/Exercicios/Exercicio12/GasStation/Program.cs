@@ -25,6 +25,78 @@ namespace GasStation
         static void PumpMenu(FuelPump fuelpump)
         {
             ScreenFuelPump.Show(fuelpump);
+            Console.WriteLine("1 - Abastecer por valor");
+            Console.WriteLine("2 - Abastecer Por litro");
+            Console.WriteLine("3 - Alterar valor");
+            Console.WriteLine("4 - Alterar conbustivel");
+            Console.WriteLine("5 - Alterar quantidade de combustivel");
+            Console.WriteLine("6 - Cadastrar nova bomba");
+            Console.WriteLine("7 - Sair");
+            uint option = ReadValidUint();
+            switch(option){
+                case 1:
+                    Console.WriteLine("Insira a quantidade em dinheiro:");
+                    double value = ReadValidDouble();
+                    if(value <= fuelpump.Tank* fuelpump.ValueLiter && value > 0){
+                        fuelpump.SupplyByValue(value);
+                        Console.WriteLine("Abastecido com sucesso");
+                    }else{
+                        Console.WriteLine("Impossivel abastecer esse valor");
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Insira a quantidade em litros:");
+                    double liter = ReadValidDouble();
+                    if(liter <= fuelpump.Tank&& liter > 0){
+                        fuelpump.SupplyByLiter(liter);
+                        Console.WriteLine("Abastecido com sucesso");
+                    }else{
+                        Console.WriteLine("Impossivel abastecer esse valor");
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Insira o novo valor:");
+                    double valueliter = ReadValidDouble();
+                    if(valueliter > 0){
+                        Console.WriteLine("Valor Alterado com sucesso");
+                        fuelpump.ChangeLiterValue(valueliter);
+                    }else{
+                        Console.WriteLine("Impossivel atribuir um valor negativo para o combustivel");
+                    }
+                    break;
+                case 4:
+                    if(fuelpump.Tank == 0){
+                        uint fueltype = GetFuelType();
+                        fuelpump.ChangeFuelType((EFuelType)fueltype);
+                        Console.WriteLine("Combustivel alterado com sucesso");
+                    }else{
+                        Console.WriteLine("Esvazie o tanque para mudar decombustivel");
+                    }
+                    break;
+                case 5:
+                    Console.Write("Insira a quantidade alterada:");
+                    double fuel = ReadValidDouble();
+                    if(fuel + fuelpump.Tank > 0){
+                        fuelpump.ChangeTank(fuel);
+                        Console.WriteLine("Valor Alterado!");
+                    }else{
+                        Console.WriteLine("Impossivel retirar essa quantidade de combustivel");
+                    }
+                    break;
+                case 6:
+                    GeralMenu();
+                    break;
+                case 7:
+                    Console.Clear();
+                    System.Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Opção invalida");
+                    break;   
+            }
+            Console.WriteLine("Pressione qualquer tecla para prosseguir");
+            Console.ReadKey();
+            PumpMenu(fuelpump);
         }
 
         static uint ReadValidUint()
@@ -53,6 +125,7 @@ namespace GasStation
             Console.WriteLine("O valor não corresponde a um combustivel");
             return GetFuelType();
         }
+
         static double GetValueLiter()
         {
             Console.Write("Insira o valor por litro de combustivel:");
