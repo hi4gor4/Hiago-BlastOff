@@ -26,7 +26,13 @@ namespace MyApp
                 default:
                     Console.Clear();
                     Console.WriteLine("Favor insira uma opção valida");
+                    break;
             }
+        }
+        static void CommonVisit()
+        {
+            Console.Clear();
+            Console.WriteLine("Favor insira o seu nome");
         }
     }
 }

@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace UserSolicitor{
     public class Solicitor{
         public static short GetShortInterval(short start, short end ){
@@ -48,6 +50,28 @@ namespace UserSolicitor{
             }  
             return value;
 
+        }
+
+        public static string GetValidString()
+        {
+            string value = "";
+            value = Console.ReadLine();
+            if(value != null){
+                return value;
+            }
+            Console.WriteLine("Insira uma string valida");
+            return GetValidString();
+        }
+
+        public static string GetValidName()
+        {
+            string name = GetValidString();
+            var reg = new Regex(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇ]{2,}$");
+            if(reg.IsMatch(name)){
+                return name;
+            }
+            Console.WriteLine("Nome Invalido, tente novamente");
+            return GetValidName();
         }
     } 
 
