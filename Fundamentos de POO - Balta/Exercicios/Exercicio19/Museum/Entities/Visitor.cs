@@ -15,12 +15,15 @@ namespace Museum.Entities
             Cpf = cpf;
             BirthDate = birthDate;
             ThemeCode = themeCode;
+            Themes = new List<byte>();
+            Themes.Add(themeCode);
         }
 
         public string Name { get; set; }
         public string Cpf { get; set; }
         public DateTime BirthDate { get; set; }
         public  byte ThemeCode { get; set; }
+        public List<byte> Themes { get; set; }
 
         public static int Attractions(byte  session)
         {
@@ -36,6 +39,10 @@ namespace Museum.Entities
                 return 46;
             }
             throw new IndexOutOfRangeException("Atração desconhecida");
+        }
+        public void AddTheme(byte themeCode){
+            Themes.Add(themeCode);
+            ThemeCode = themeCode;
         }
     }
 }

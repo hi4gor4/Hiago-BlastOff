@@ -17,6 +17,21 @@ namespace UserSolicitor{
                 return GetShortInterval(start, end ); 
             }
         }
+        public static byte GetByteInterval(byte start, byte end ){
+            byte option = 0;
+            try{
+                option = byte.Parse(Console.ReadLine());
+            }catch{
+                Console.WriteLine("Valor invalido tente novamente");
+                return GetByteInterval(start, end );
+            }
+            if(option >= start && option <= end){
+                return option;
+            }else{
+                Console.WriteLine("O valor não corresponde a nenhuma opção, Tente novamente");
+                return GetByteInterval(start, end ); 
+            }
+        }
         public static double GetValidpositiveDouble()
         {
             double value = GetValidDouble();
