@@ -73,6 +73,19 @@ namespace UserSolicitor{
             Console.WriteLine("Nome Invalido, tente novamente");
             return GetValidName();
         }
+        public static DateTime getValidDate()
+        {
+            string date = GetValidString();
+            DateTime birthDate; 
+            try{
+                birthDate = DateTime.Parse(date);
+            }catch{
+                Console.WriteLine("Favor insira uma data valida");
+                return getValidDate();
+            }
+            //ANCHOR melhorar tramento de data e limitar espaço de tempo
+            return birthDate;
+        }
     } 
 
 }
