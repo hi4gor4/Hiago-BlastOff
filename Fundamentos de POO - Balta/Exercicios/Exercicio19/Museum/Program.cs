@@ -11,12 +11,13 @@ namespace MyApp
             Console.Clear();
             Console.WriteLine("Sistema de visitação");
             Console.WriteLine("1- Para cadastrar uma visita comun");
-            Console.WriteLine("2- Para cadastrar uma vista simples");
+            Console.WriteLine("2- Para cadastrar uma visita premium");
             Console.WriteLine("3- Para sair");
             int option = Solicitor.GetValidInt();
             switch(option)
             {
                 case 1:
+                    CommonVisit();
                     break;
                 case 2: 
                     break;
@@ -42,7 +43,24 @@ namespace MyApp
             Console.WriteLine("Use o padrão dd/mm/aaaa");
             DateTime birthDate = Solicitor.getValidDate();
             byte attraction = MenuAttractions();
+            MenuVisitor(new Visitor(name,cpf,birthDate,attraction));
              
+        }
+        static void PremiumVisit()
+        {
+            Console.Clear();
+            Console.WriteLine("Favor insira o seu nome");
+            string name = Solicitor.GetValidName();
+            Console.WriteLine("Favor Insira seu cpf");
+            string cpf = Solicitor.GetValidString();
+            //ANCHOR Criar solicitor de cpf usando o exercicio 11 de c#
+            Console.WriteLine("Favor insira uma data valida");
+            Console.WriteLine("Use o padrão dd/mm/aaaa");
+            DateTime birthDate = Solicitor.getValidDate();
+            byte attraction = MenuAttractions();
+            Console.WriteLine("Insira o valor do seu vale refeição:");
+            double mealTicket = Solicitor.GetValidpositiveDouble();
+            MenuVisitor(new PremiumVisitor(name,cpf,birthDate,attraction, mealTicket));
         }
         static byte MenuAttractions(){
             Console.Clear();
@@ -70,10 +88,49 @@ namespace MyApp
         }
 
         static void MenuVisitor(Visitor visitor){
+            Console.Clear();
             ViewVisit(visitor);
             Console.WriteLine("Deseja fazer outra visita");
             Console.WriteLine("1- Para sim");
             Console.WriteLine("2- Para sair");
+            byte option = 0;
+            option = Solicitor.GetByteInterval(1,2);
+            
+            if(option == 1){
+                visitor.AddTheme(MenuAttractions());
+                MenuVisitor(visitor);
+            }
+            Console.Clear();
+            System.Environment.Exit(0);
+        }
+        static void MenuPremiumVisitor(PremiumVisitor visitor){
+            Console.Clear();
+            ViewVisit(visitor);
+            Console.WriteLine("Deseja fazer outra visita");
+            Console.WriteLine("1- Para sim");
+            byte option = 0;
+            Console.WriteLine("2- Para fazer uma refeição");
+            Console.WriteLine("3-Para sair");
+            option = Solicitor.GetByteInterval(1,3);
+            if(option == 2){
+                if(visitor.MealTicket !=0)
+                {
+                    Console.WriteLine($"Você tem um saldo de {visitor.MealTicket}, insira qual valor quer utilizar");
+                    double meal = Solicitor.GetValidpositiveDouble();
+                    if(meal <= visitor.MealTicket)
+                    {
+                        visitor.MakeMeal(meal);
+                        Console.WriteLine("Refeição realizada com sucesso");
+                        MenuPremiumVisitor(visitor);
+                    }
+                }    
+            }
+            if(option == 1){
+                visitor.AddTheme(MenuAttractions());
+                MenuPremiumVisitor(visitor);
+            }
+            Console.Clear();
+            System.Environment.Exit(0);
         }
         static void ViewVisit(Visitor visitor)
         {
