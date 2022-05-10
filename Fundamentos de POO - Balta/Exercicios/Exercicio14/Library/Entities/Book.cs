@@ -1,4 +1,4 @@
-namespace Library.Entities
+namespace LibraryEntities
 {
     public class Book
     {
@@ -12,6 +12,7 @@ namespace Library.Entities
         public Book()
         {
             Title = "";
+            ISBN = "";
         }
 
         public int NumberPages { get; set; }
