@@ -1,6 +1,6 @@
 namespace BankEntities
 {
-    public abstract class CheckingAccount : Account
+    public  class CheckingAccount : Account
     {
         private double MonthlyPayment { get; set; }
 

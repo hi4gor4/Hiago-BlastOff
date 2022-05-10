@@ -1,11 +1,13 @@
-﻿using UserSolicitor;
+﻿using Bank.Controllers;
+using BankEntities;
+using UserSolicitor;
 namespace BankAplicattion
 {
     public class program
     {
         static void Main(string[] args)
         {
-
+            Menu();
         }
         static void Menu()
         {
@@ -20,7 +22,7 @@ namespace BankAplicattion
             switch(option)
             {
                 case 1:
-                    //ANCHOR adicionar cadastro de conta corrente
+                    RegisterCurrentAccount();
                     break;
                 case 2:
                     // ANCHOR adicionar cadastro de conta poupança
@@ -45,6 +47,26 @@ namespace BankAplicattion
             double balance = Solicitor.GetValidDouble();
             Console.WriteLine("Favor insira a taxa de manutenção da sua conta");
             double monthlyPayment = Solicitor.GetValidpositiveDouble();
+            CCheckingAccount.MenuCheckingAccount(new CheckingAccount(number.ToString(), bankBranch, balance, monthlyPayment)); 
+
+
+        }
+
+        static void RegisterSavingsAccount()
+        {
+            Console.Clear();
+            Console.WriteLine("Para cadastrar sua conta corrente, eu vou precisar dos seus dados, vamos lá?");
+            Console.WriteLine("Pressione qualquer tecla para prosseguir");
+            Console.ReadKey();
+            Console.WriteLine("Favor imsira o numero da conta");
+            int number = Solicitor.GetValidInt();//ANCHOR tratar numeros negativos
+            Console.WriteLine("Favor insira sua agencia bancaria");
+            int bankBranch = Solicitor.GetValidInt();//ANCHOR tratar numeros negativoa
+            Console.WriteLine("Insira seu saldo");
+            double balance = Solicitor.GetValidDouble();
+            Console.WriteLine("Favor insira a taxa de rendimentos da sua conta");
+            double inconome = Solicitor.GetValidpositiveDouble();
+            CCheckingAccount.MenuCheckingAccount(new CheckingAccount(number.ToString(), bankBranch, balance, inconome)); 
 
 
         }

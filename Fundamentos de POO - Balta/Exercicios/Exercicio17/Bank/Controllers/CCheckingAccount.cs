@@ -34,6 +34,7 @@ namespace Bank.Controllers
             }
             Console.WriteLine("Pressione qualquer tecla para prosseguir");
             Console.ReadKey();
+            MenuCheckingAccount(clientAccount);
         }
        
         public static void RequestMonthlyPayment(CheckingAccount clientAccount)
