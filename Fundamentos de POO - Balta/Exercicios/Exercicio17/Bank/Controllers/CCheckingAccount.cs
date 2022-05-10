@@ -1,7 +1,7 @@
 using BankEntities;
 using UserSolicitor;
 
-namespace Bank.View
+namespace Bank.Controllers
 {
     public class CCheckingAccount
     {
@@ -19,10 +19,10 @@ namespace Bank.View
             var option = Solicitor.GetByteInterval(1,4);
             switch(option){
                 case 1:
-                    RequestDepositValue(clientAccount);
+                    CAccount.RequestDepositValue(clientAccount);
                     break;
                 case 2:
-                    RequestWithdrawal(clientAccount);
+                    CAccount.RequestWithdrawal(clientAccount);
                     break;
                 case 3:
                     RequestMonthlyPayment(clientAccount);
@@ -35,22 +35,7 @@ namespace Bank.View
             Console.WriteLine("Pressione qualquer tecla para prosseguir");
             Console.ReadKey();
         }
-        public static void RequestDepositValue(CheckingAccount clientAccount)
-        {
-            Console.WriteLine("Insira o valor a ser depositado");
-            double depositValue = Solicitor.GetValidpositiveDouble();
-            clientAccount.MakeDeposit(depositValue);
-            Console.WriteLine("Deposito Realizado com sucesso"); 
-        }
-
-        public static void RequestWithdrawal(CheckingAccount clientAccount)
-        {
-            Console.WriteLine("Insira o valor a ser sacado");
-            double widthdrawal = Solicitor.GetValidpositiveDouble();
-            if(clientAccount.MakeWithdrawal(widthdrawal)){
-                Console.WriteLine("Saque realizado com sucesso");
-            }
-        }
+       
         public static void RequestMonthlyPayment(CheckingAccount clientAccount)
         {
             if(clientAccount.DeductsMonthlyFee()){

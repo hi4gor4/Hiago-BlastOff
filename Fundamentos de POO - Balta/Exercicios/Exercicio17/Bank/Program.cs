@@ -31,5 +31,22 @@ namespace BankAplicattion
                     break;
             } 
         }
+        static void RegisterCurrentAccount()
+        {
+            Console.Clear();
+            Console.WriteLine("Para cadastrar sua conta corrente, eu vou precisar dos seus dados, vamos lá?");
+            Console.WriteLine("Pressione qualquer tecla para prosseguir");
+            Console.ReadKey();
+            Console.WriteLine("Favor imsira o numero da conta");
+            int number = Solicitor.GetValidInt();//ANCHOR tratar numeros negativos
+            Console.WriteLine("Favor insira sua agencia bancaria");
+            int bankBranch = Solicitor.GetValidInt();//ANCHOR tratar numeros negativoa
+            Console.WriteLine("Insira seu saldo");
+            double balance = Solicitor.GetValidDouble();
+            Console.WriteLine("Favor insira a taxa de manutenção da sua conta");
+            double monthlyPayment = Solicitor.GetValidpositiveDouble();
+
+
+        }
     }
 }

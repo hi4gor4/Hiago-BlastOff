@@ -10,7 +10,13 @@ namespace BankEntities
             MonthlyPayment = monthlyPayment;
         }
 
-        public void DeductsMonthlyFee() => Balance = Balance-MonthlyPayment;
+        public bool DeductsMonthlyFee(){
+            if(Balance >= MonthlyPayment){
+                Balance = Balance-MonthlyPayment;
+                return true;
+            }
+            return false;
+        }
         
         
 

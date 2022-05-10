@@ -10,7 +10,7 @@ namespace BankEntities
             Inconome = inconome;
         }
 
-        public double CalculateIncome(uint numberMonths)=> Balance + (Balance*Inconome*numberMonths);
+        public double CalculateIncome(uint numberMonths)=> (Balance*Inconome*numberMonths);
         
 
     }
