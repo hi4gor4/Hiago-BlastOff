@@ -2,9 +2,10 @@ namespace LibraryEntities
 {
     public class Book
     {
-        public Book(int numberPages, string title, string author)
+        public Book(uint numberPages, string title, string author,string  isbn)
         {
             NumberPages = numberPages;
+            ISBN = isbn;
             Title = title;
             Id = Guid.NewGuid();
             Author = author;
@@ -15,7 +16,7 @@ namespace LibraryEntities
             ISBN = "";
         }
 
-        public int NumberPages { get; set; }
+        public uint NumberPages { get; set; }
         public string  Title { get; set; }
         
         public string ISBN { get; set; } 

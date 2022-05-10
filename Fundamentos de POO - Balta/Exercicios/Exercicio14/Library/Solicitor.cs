@@ -67,6 +67,19 @@ namespace UserSolicitor{
 
         }
 
+        public static uint GetValidUint()
+        {
+          uint value = 0;
+            try{
+                value = uint.Parse(Console.ReadLine());
+            }catch{
+                Console.WriteLine("Valor invalido tente novamente");
+                return GetValidUint();
+            }  
+            return value;
+
+        }
+
         public static string GetValidString()
         {
             string value = "";
