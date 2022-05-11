@@ -22,11 +22,14 @@ namespace SorteiaFuncionario.Model
 
         public void AddFuncionario(Funcionario func)=> Funcionarios.Add(func);
 
+        private void RemoveFuncionario(int index)=> Funcionarios.Remove(Funcionarios[index]);
         public Funcionario Sortear()
         {
             Random random = new Random();
             int sorteado = random.Next(0, Funcionarios.Count);
-            return Funcionarios[sorteado];
+            Funcionario funcSorteado = Funcionarios[sorteado];
+            RemoveFuncionario(sorteado);
+            return funcSorteado;
         }
     }
 }
