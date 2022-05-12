@@ -12,24 +12,34 @@ namespace SorteiaFuncionario.Model
         public Sorteio(string nome)
         {
             Nome = nome;
-            Funcionarios = new List<Funcionario>();
+            Funcionarios = new List<string>();
+            Sorteados = new List<string>();
             Data = DateTime.Now;
         }
         public string Nome { get; set; }
         public DateTime Data { get; set; }
-        public List<Funcionario> Funcionarios { get; }
+        public List<string> Sorteados { get; }     
+        public List<string> Funcionarios { get; }
 
 
-        public void AddFuncionario(Funcionario func)=> Funcionarios.Add(func);
+        public void AddFuncionario(string func)=> Funcionarios.Add(func);
 
         private void RemoveFuncionario(int index)=> Funcionarios.Remove(Funcionarios[index]);
-        public Funcionario Sortear()
+        public string Sortear()
         {
             Random random = new Random();
             int sorteado = random.Next(0, Funcionarios.Count);
-            Funcionario funcSorteado = Funcionarios[sorteado];
-            RemoveFuncionario(sorteado);
-            return funcSorteado;
+            string funcSorteado = Funcionarios[sorteado];
+            if(Sorteados.Count() < Funcionarios.Count()){
+                foreach(string jaSorteado in Sorteados)
+                {   
+                    if(funcSorteado == jaSorteado)
+                        return Sortear();
+                }
+                RemoveFuncionario(sorteado);
+                return funcSorteado;
+            }
+            throw new Exception("Impossivel sortear um nome");
         }
     }
 }
