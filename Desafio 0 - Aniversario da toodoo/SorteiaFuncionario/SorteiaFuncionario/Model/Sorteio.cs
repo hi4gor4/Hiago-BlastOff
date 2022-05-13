@@ -23,8 +23,7 @@ namespace SorteiaFuncionario.Model
 
 
         public void AddFuncionario(string func)=> Funcionarios.Add(func);
-
-        private void RemoveFuncionario(int index)=> Funcionarios.Remove(Funcionarios[index]);
+        public void AddSorteado(string sorteado) => Sorteados.Add(sorteado);
         public string Sortear()
         {
             Random random = new Random();
@@ -36,7 +35,7 @@ namespace SorteiaFuncionario.Model
                     if(funcSorteado == jaSorteado)
                         return Sortear();
                 }
-                RemoveFuncionario(sorteado);
+                Sorteados.Add(funcSorteado);
                 return funcSorteado;
             }
             throw new Exception("Impossivel sortear um nome");

@@ -43,5 +43,6 @@ namespace SorteiaFuncionario.Planilha
                 File.WriteAllBytes(path, package.GetAsByteArray());
             }  
         }
+        public static bool VerifyTable(string path)=>  File.Exists(path);
     }
 }
