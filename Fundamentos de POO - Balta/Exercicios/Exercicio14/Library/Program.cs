@@ -63,14 +63,56 @@ namespace Program
                     ConsultByTitle(lib);
                     break;
                 case 2:
-                    //ANCHOR criar fução para PEGAR pelo author
+                    ConsultByAuthor(lib);
                     break;
                 case 3:
-                //ANCHOR criar função parar pegar pelo isbn
+                    ConsultByIsbn(lib);
                     break;
                 
             }
             
+        }
+        static void ConsultByAuthor(Library lib)
+        {
+            Console.Clear();
+            Console.WriteLine("Insira o autor do livro");
+            string author = Solicitor.GetValidString();
+            Console.Clear();
+            bool occurrence  = false;
+            foreach(Book book in lib.Books)
+            {
+                if(book.Author == author)
+                {
+                    Console.WriteLine($"{book.Title} do autor {book.Author} codigo ISBN{book.ISBN}");
+                    occurrence = true;
+                }
+            }
+            if(!occurrence)
+            {
+                Console.WriteLine("Não encontramos nenhuma correspondencia para esse Autor");
+            }
+
+
+        }
+        static void ConsultByIsbn(Library lib)
+        {
+            Console.Clear();
+            Console.WriteLine("Insira o isbn do livro");
+            string isbn = Solicitor.GetValidString();
+            Console.Clear();
+            bool occurrence  = false;
+            foreach(Book book in lib.Books)
+            {
+                if(book.ISBN == isbn)
+                {
+                    Console.WriteLine($"{book.Title} do autor {book.Author} codigo ISBN{book.ISBN}");
+                    occurrence = true;
+                }
+            }
+            if(!occurrence)
+            {
+                Console.WriteLine("Não encontramos nenhuma correspondencia para esse ISBN");
+            }
         }
         static void ConsultByTitle(Library lib)
         {
