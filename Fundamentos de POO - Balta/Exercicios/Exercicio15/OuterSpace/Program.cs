@@ -8,6 +8,7 @@ namespace Program
         static void Main(string[] args)
         {
             var space = new OutherSpace();
+            Menu(space);
             
         }
         static void Menu(OutherSpace space)
@@ -25,7 +26,7 @@ namespace Program
             switch(option)
             {
                 case 1:
-                    //ANCHOR fazer função de cadastro
+                    AddCelestialBody(space);
                     break;
                 case 2: 
                     //ANCHOR fazer função de consulta
@@ -36,6 +37,22 @@ namespace Program
                     break;
             }
 
+
+        }
+        static void AddCelestialBody(OutherSpace space){  
+            Console.WriteLine("Insira a massa do corpo celeste");
+            Console.WriteLine("Abstraia os valores ");
+            double mass = Solicitor.GetValidpositiveDouble();
+            Console.WriteLine("Insira a tamanho do corpo celeste");
+            Console.WriteLine("Abstraia os valores ");
+            double size = Solicitor.GetValidpositiveDouble();
+            Console.WriteLine("Insira o tipo do corpo celeste");
+            Console.WriteLine("1 Para Asteroid");
+            Console.WriteLine("2 Para Planeta");
+            Console.WriteLine("3 Para nebulosa");
+            Console.WriteLine("Qualquer outro valor representa um Asteroid");
+            ECelestialBodyType type = (ECelestialBodyType) Solicitor.GetValidUint();
+            space.AddBody(new CelestialBody(type, mass, size));
         }
     }
 }
