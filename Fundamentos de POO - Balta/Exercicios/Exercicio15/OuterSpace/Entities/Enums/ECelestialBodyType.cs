@@ -2,10 +2,10 @@ namespace OutherSpaceEnum
 {
     public enum ECelestialBodyType
     {
-        Asteroid = 0,
-        Planet = 1,
-        Nebulae = 2,
+        Asteroid = 1,
+        Planet = 2,
+        Nebulae = 3,
 
-        Default = Asteroid
+        //default = 1
     }
 }

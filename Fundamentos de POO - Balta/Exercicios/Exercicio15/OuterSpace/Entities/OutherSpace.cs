@@ -7,7 +7,7 @@ namespace OuterSpaceEntities
         {
             Celestials = new List<CelestialBody>();
         }
-        private List<CelestialBody> Celestials { get; set; }
+        public List<CelestialBody> Celestials { get; set; }
         
         public void AddBody(CelestialBody item) => Celestials.Add(item);
 

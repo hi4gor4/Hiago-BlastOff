@@ -29,14 +29,16 @@ namespace Program
                     AddCelestialBody(space);
                     break;
                 case 2: 
-                    //ANCHOR fazer função de consulta
+                    ConsultCelestialBody(space);
                     break;
                 case 3:
                     Console.Clear();
                     Environment.Exit(0);
                     break;
             }
-
+            Console.WriteLine("Insira qualquer tecla para constinuar");
+            Console.ReadKey();
+            Menu(space);
 
         }
         static void AddCelestialBody(OutherSpace space){  
@@ -53,6 +55,25 @@ namespace Program
             Console.WriteLine("Qualquer outro valor representa um Asteroid");
             ECelestialBodyType type = (ECelestialBodyType) Solicitor.GetValidUint();
             space.AddBody(new CelestialBody(type, mass, size));
+        }
+        static void ConsultCelestialBody(OutherSpace space)
+        {
+            Console.Clear();
+            Console.WriteLine("1- Para consultar Asteroids");
+            Console.WriteLine("2- Para consultar Planetas");
+            Console.WriteLine("3- Para consultar nebulosas");
+            var type= (ECelestialBodyType) Solicitor.GetShortInterval(1,3);
+            short occurrence = 0;
+            foreach(CelestialBody celestial in space.Celestials)
+            {
+                if(type == celestial.Type)
+                {
+                    occurrence +=1;
+                    Console.WriteLine($"{occurrence}   {celestial}");
+
+                }
+            }
+
         }
     }
 }

@@ -15,8 +15,10 @@ namespace OuterSpaceEntities
 
         public double size { get; set; }
 
-        
-    
+        public override string ToString()
+        {
+            return $"{Type}{Mass}";
+        }
 
     }
 }
