@@ -5,6 +5,8 @@ namespace ProgrammingClassEntities
         public StrutureMatrix(int sizeLine, int sizeColumn)
         {
             Matrix = new int[sizeLine,sizeColumn];
+            SizeLine =  sizeLine;
+            SizeColumn = sizeColumn;
 
         }
 
@@ -26,11 +28,11 @@ namespace ProgrammingClassEntities
         public int TotalValue()
         {
             int sum = 0;
-             for(int countLine = 0; countLine <SizeLine; countLine ++)
+             for(int countLine = 0; countLine <=SizeLine; countLine ++)
             {
-                for(int countColumn = 0; countColumn < SizeColumn; countColumn ++)
+                for(int countColumn = 0; countColumn <= SizeColumn; countColumn ++)
                 {
-                    sum += Matrix[countLine, countColumn]
+                    sum += Matrix[countLine, countColumn];
                 }
             }
             return sum;
@@ -65,6 +67,17 @@ namespace ProgrammingClassEntities
                 }
             }
             return max;
+        }
+        public void Print()
+        {
+            for(int countLine = 0; countLine <SizeLine; countLine ++)
+            {
+                for(int countColumn = 0; countColumn < SizeColumn; countColumn ++)
+                {
+                    Console.Write($"[{countLine},{countColumn}]");
+                    Console.WriteLine(Matrix[countLine, countColumn]); 
+                }
+            }
         }
 
 
