@@ -23,7 +23,7 @@ namespace ProgramStructureds
                     GenerateMatrix(st);
                     break;
                 case 2:
-                    //ANCHOR Cadastro de vetor
+                    GenerateVector();
                     break;
                 case 3:
                     Console.Clear();
@@ -70,6 +70,72 @@ namespace ProgramStructureds
             Console.ReadKey();
             GenerateMatrix(st);
         }
-    }
+        static void GenerateVector()
+        {
+            Console.Clear();
+            Console.WriteLine("Para prosseguir insira o tamanho do vetor");
+            var tamanho = Solicitor.GetValidUint();
+            if(tamanho==0)
+            {
+                Console.WriteLine("Não é possivel criar um vetor de 0 possições");
+                Console.WriteLine("Pressione qualquer tecla para continuar");
+                Console.ReadKey();
+                GenerateVector();
+            }else{
+                StrutureVector sv = new StrutureVector(tamanho);
+                for(int i =0; i< tamanho; i++){
+                    Console.WriteLine($"Insira o valor para a posição {i+1}");
+                    sv.AddValue(Solicitor.GetValidFloat());
+                }
+                MenuVetor(sv);
+            }
+        }
+        static void MenuVetor(StrutureVector sv)
+        {
+            Console.Clear();
+            Console.WriteLine("1- Para consultar a parte inteira de um valor");
+            Console.WriteLine("2- Para multiplicar o vetor por um inteiro");
+            Console.WriteLine("3- Para voltar ao menu");
+            Console.WriteLine("4- Para sair");
+            byte option = Solicitor.GetByteInterval(1,4);
+            switch(option)
+            {
+                case 1:
+                    GetInt(sv);
+                    break;
+                case 2:
+                    MultiplyBy(sv);
+                    break;
+                case 3:
+                    Menu();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Environment.Exit(0);
+                    break;
 
+            }
+            Console.WriteLine("Pressione qualquer tecla para prosseguir");
+            Console.ReadKey();
+            MenuVetor(sv);
+        }
+        static void MultiplyBy(StrutureVector sv)
+        {
+            Console.WriteLine("Insira o valor pelo qual quer multiplicar");
+            int value = Solicitor.GetValidInt();
+            sv.Multiply(value);
+        }
+        static void GetInt(StrutureVector sv)
+        {
+            Console.WriteLine("Insira o valor que  quer consultar");
+            uint value = Solicitor.GetValidUint();
+            if(value < sv.SizeVector)
+            {
+                Console.WriteLine(sv.IntValue(value));
+            } else
+            {
+                Console.WriteLine("Impossivel consultar essa posição");
+            }
+        }
+    }
 }

@@ -2,7 +2,7 @@ namespace ProgrammingClassEntities
 {
     public class StrutureVector
     {
-        public StrutureVector(int sizeVector)
+        public StrutureVector(uint sizeVector)
         {
             Vector = new float[sizeVector];
             
@@ -13,7 +13,7 @@ namespace ProgrammingClassEntities
 
         private float[] Vector { get; set; }
         public int CounterVector { get; set; }
-        public int SizeVector { get; set; }
+        public uint SizeVector { get; set; }
  
         public bool AddValue(float value)
         {
@@ -26,13 +26,20 @@ namespace ProgrammingClassEntities
             return false;
         }
 
-        public int IntValue(int index)
+        public int IntValue(uint index)
         {
             if(index < SizeVector && index >= 0)
             {
                 return (int)Math.Ceiling(Vector[index]); 
             }
             throw new IndexOutOfRangeException();
+        }
+
+        public void Multiply(int value)
+        {
+            for(int i=0; i<SizeVector; i++){
+                Vector[i]= Vector[i]* value;
+            }
         }
 
     }

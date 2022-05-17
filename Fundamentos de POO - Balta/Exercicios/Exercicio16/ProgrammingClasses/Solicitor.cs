@@ -54,6 +54,18 @@ namespace UserSolicitor{
             return value;
 
         }
+        public static float GetValidFloat()
+        {
+          float value = 0;
+            try{
+                value = float.Parse(Console.ReadLine());
+            }catch{
+                Console.WriteLine("Valor invalido tente novamente");
+                return GetValidFloat();
+            }  
+            return value;
+
+        }
         public static int GetValidInt()
         {
           int value = 0;
