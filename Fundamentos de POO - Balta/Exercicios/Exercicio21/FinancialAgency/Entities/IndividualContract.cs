@@ -2,6 +2,10 @@ namespace FinancialAgency
 {
     public  class IndividualContract : Contract
     {
+        public IndividualContract()
+        {
+            
+        }
         public IndividualContract(int number, string contractor, float value, int term,string cpf, int age)
         :base(number, contractor, value, term)
         {
@@ -25,6 +29,5 @@ namespace FinancialAgency
             }
             return base.CalculateInstallment()+ additional;
         }
-        //ANCHOR fazer polimorfismo da classe
     }
 }        
