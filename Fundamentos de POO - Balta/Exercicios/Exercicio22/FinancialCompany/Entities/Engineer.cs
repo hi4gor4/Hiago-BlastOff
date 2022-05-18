@@ -2,11 +2,27 @@
 
 namespace FinancialCompanyEntities
 {
-    public class Engineer : EMployee
+    public class Engineer : Employee
     {
-        private string Crea  { get; set; }
-        private string Category {get; set;}
-        private string CurrentProject {get; set;}
-        //ANCHOR fazer polimorfismo 
+        public Engineer()
+        {
+            
+        }
+        public Engineer(string name, string cpf, double salary, string crea, string category, string currentProject) 
+        : base(name, cpf, salary)
+        {
+            Crea = crea;
+            Category = category;
+            CurrentProject = currentProject;
+            
+        }
+
+        public string Crea  { get; set; }
+        public string Category {get; set;}
+        public string CurrentProject {get; set;}
+      
+        public override void AddBonus(){
+            this.Salary += Salary * 0.05;
+        } 
     }
 }
