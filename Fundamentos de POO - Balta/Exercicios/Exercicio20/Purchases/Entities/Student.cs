@@ -2,6 +2,10 @@ namespace PurchasesEntities
 {
     public class Student:Purchase
     {
+        public Student()
+        {
+            
+        }
         public Student(double price, short installment, string type)
         :base(price, installment,type)
         {

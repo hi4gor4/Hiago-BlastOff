@@ -2,6 +2,10 @@ namespace PurchasesEntities
 {
     public class Purchase
     {
+        public Purchase()
+        {
+            
+        }
         public Purchase(double price, short installment, string type)
         {
             Price = price;
@@ -16,18 +20,22 @@ namespace PurchasesEntities
         public virtual bool PayInstallment(short value)//ANCHOR verificar se desconta o numero de parcela / valor total
         {
             if(Installment>= value){
+                Price -= (Price/Installment)*value;
                 Installment -=value;
                 return true;
             }
             return false;
         }
 
-        public virtual void removePurchase()=> Installment = 0;
+        public virtual void removePurchase(){
+            Price = 0;
+            Installment = 0; 
+        }    
 
         public void CancelPurchase()
         {
             this.removePurchase();
-            Console.WriteLine("Compra cancelada");//ANCHOR ver maneira de não printar na classe
+            Console.WriteLine("Compra cancelada");
         }
 
         public void UpdateInstallment(double interetRate, short numberInstallments )
@@ -35,6 +43,10 @@ namespace PurchasesEntities
             Installment = numberInstallments;
             Price += Price*interetRate;
 
+        }
+        public override string ToString()
+        {
+            return $"{Price} parcelas:{Installment} Tipo:{Type}";
         }
 
     }
