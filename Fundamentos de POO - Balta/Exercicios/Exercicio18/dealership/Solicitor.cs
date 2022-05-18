@@ -88,6 +88,16 @@ namespace UserSolicitor{
             Console.WriteLine("Nome Invalido, tente novamente");
             return GetValidName();
         }
+        public static string GetValidPlate()
+        {
+            string name = GetValidString();
+            var reg = new Regex(@"^[A-Z]{3}-[0-9]{4}$");
+            if(reg.IsMatch(name)){
+                return name;
+            }
+            Console.WriteLine("Placa Invalida, tente novamente");
+            return GetValidPlate();
+        }
         public static DateTime getValidDate()
         {
             string date = GetValidString();
@@ -98,7 +108,6 @@ namespace UserSolicitor{
                 Console.WriteLine("Favor insira uma data valida");
                 return getValidDate();
             }
-            //ANCHOR melhorar tramento de data e limitar espaço de tempo
             return birthDate;
         }
     } 

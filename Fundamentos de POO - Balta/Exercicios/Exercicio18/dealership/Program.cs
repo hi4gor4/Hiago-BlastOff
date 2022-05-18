@@ -5,12 +5,16 @@ using UserSolicitor;
 namespace DealershipControllers
 {
     public class Dealership{
+
+        static void Main(string[] args){
+            MenuDealerShip();
+        }
         public static void  MenuDealerShip()
         {
             Console.Clear();
             Console.WriteLine("Bem vindo a Locar, Concesionaria de veiculos");
             Console.WriteLine("1- Para saber mais sobre veiculos simples");
-            Console.WriteLine("2- Para contratar veiculos premium");
+            Console.WriteLine("2- Para saber mais sobre veiculos premium");
             Console.WriteLine("3- Sair da loja");
             byte option = Solicitor.GetByteInterval(1,3);
             switch(option)
@@ -41,7 +45,8 @@ namespace DealershipControllers
             Console.WriteLine("Insira o modelo co seu carro");
             string model = Solicitor.GetValidString();
             Console.WriteLine("Insira a placa do veiculo");
-            string licensePlate = Solicitor.GetValidString();//ANCHOR fazer regex pra placa
+            Console.WriteLine("use o padrão ZZZ-0000");
+            string licensePlate = Solicitor.GetValidPlate();
             Console.Clear();
             Console.WriteLine("Parabens pela sua escolha!");
             Automobile clientAutomobile = new Automobile(fuel, color, model, licensePlate);
@@ -71,7 +76,8 @@ namespace DealershipControllers
             Console.WriteLine("Insira o modelo co seu carro");
             string model = Solicitor.GetValidString();
             Console.WriteLine("Insira a placa do veiculo");
-            string licensePlate = Solicitor.GetValidString();//ANCHOR fazer regex pra placa
+            Console.WriteLine("use o padrão ZZZ-0000");
+            string licensePlate = Solicitor.GetValidPlate();
             Console.Clear();
             AutomobileDeluxe clientAutomobile = new AutomobileDeluxe(fuel, color, model, licensePlate);
             Console.WriteLine("Podemos incluir alguns adicionais no seu veiculo!");
