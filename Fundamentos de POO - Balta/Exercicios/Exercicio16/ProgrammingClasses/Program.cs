@@ -84,7 +84,7 @@ namespace ProgramStructureds
             }else{
                 StrutureVector sv = new StrutureVector(tamanho);
                 for(int i =0; i< tamanho; i++){
-                    Console.WriteLine($"Insira o valor para a posição {i+1}");
+                    Console.WriteLine($"Insira o valor para a posição {i}");
                     sv.AddValue(Solicitor.GetValidFloat());
                 }
                 MenuVetor(sv);
@@ -96,8 +96,9 @@ namespace ProgramStructureds
             Console.WriteLine("1- Para consultar a parte inteira de um valor");
             Console.WriteLine("2- Para multiplicar o vetor por um inteiro");
             Console.WriteLine("3- Para voltar ao menu");
-            Console.WriteLine("4- Para sair");
-            byte option = Solicitor.GetByteInterval(1,4);
+            Console.WriteLine("4- Para consultar um valor");
+            Console.WriteLine("5- Para sair");
+            byte option = Solicitor.GetByteInterval(1,5);
             switch(option)
             {
                 case 1:
@@ -110,6 +111,9 @@ namespace ProgramStructureds
                     Menu();
                     break;
                 case 4:
+                    GetValue(sv);
+                    break;
+                case 5:
                     Console.Clear();
                     Environment.Exit(0);
                     break;
@@ -132,6 +136,18 @@ namespace ProgramStructureds
             if(value < sv.SizeVector)
             {
                 Console.WriteLine(sv.IntValue(value));
+            } else
+            {
+                Console.WriteLine("Impossivel consultar essa posição");
+            }
+        }
+        static void GetValue(StrutureVector sv)
+        {
+            Console.WriteLine("Insira o valor que  quer consultar");
+            uint value = Solicitor.GetValidUint();
+            if(value < sv.SizeVector)
+            {
+                Console.WriteLine(sv.Vector[value]);
             } else
             {
                 Console.WriteLine("Impossivel consultar essa posição");

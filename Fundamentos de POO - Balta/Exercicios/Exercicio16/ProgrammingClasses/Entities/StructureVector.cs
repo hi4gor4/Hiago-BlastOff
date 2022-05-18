@@ -11,7 +11,7 @@ namespace ProgrammingClassEntities
             
         }
 
-        private float[] Vector { get; set; }
+        public float[] Vector { get; set; }
         public int CounterVector { get; set; }
         public uint SizeVector { get; set; }
  

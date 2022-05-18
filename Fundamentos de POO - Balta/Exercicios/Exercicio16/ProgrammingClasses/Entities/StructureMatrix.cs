@@ -25,12 +25,12 @@ namespace ProgrammingClassEntities
             }
         }
         
-        public int TotalValue()
+        public double TotalValue()
         {
-            int sum = 0;
-             for(int countLine = 0; countLine <=SizeLine; countLine ++)
+            double sum = 0;
+             for(int countLine = 0; countLine <SizeLine; countLine ++)
             {
-                for(int countColumn = 0; countColumn <= SizeColumn; countColumn ++)
+                for(int countColumn = 0; countColumn < SizeColumn; countColumn ++)
                 {
                     sum += Matrix[countLine, countColumn];
                 }
@@ -38,7 +38,7 @@ namespace ProgrammingClassEntities
             return sum;
         }
 
-        public int Average() => TotalValue()/ (SizeLine/SizeColumn);
+        public double Average() => TotalValue()/ (SizeLine*SizeColumn);
 
         public int MinValue(){
             int min = 50;
