@@ -1,6 +1,6 @@
 namespace BankEntities
 {
-    public abstract class SavingsAccount : Account
+    public  class SavingsAccount : Account
     {
         public double Inconome { get; set; }
 

@@ -42,6 +42,16 @@ namespace UserSolicitor{
                 return GetValidpositiveDouble();
             }
         }
+        public static int GetValidpositiveInt()
+        {
+            int value = GetValidInt();
+            if(value>0){
+                return value;
+            }else{
+                Console.WriteLine("Insira um valor positivo, Tente novamente");
+                return GetValidpositiveInt();
+            }
+        }
         public static double GetValidDouble()
         {
           double value = 0;
@@ -98,7 +108,6 @@ namespace UserSolicitor{
                 Console.WriteLine("Favor insira uma data valida");
                 return getValidDate();
             }
-            //ANCHOR melhorar tramento de data e limitar espaço de tempo
             return birthDate;
         }
     } 

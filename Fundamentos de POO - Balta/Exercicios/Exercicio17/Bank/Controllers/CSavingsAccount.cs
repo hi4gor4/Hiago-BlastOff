@@ -9,7 +9,6 @@ namespace Bank.Controllers
   
 
         public static void MenuSavingAccount(SavingsAccount clientAccount){
-            //ANCHOR colocar um visualizador de dados
             Console.WriteLine("Gerenciador de conta poupança");
             Console.WriteLine("1- Para fazer um deposito");
             Console.WriteLine("2- Para Fazer uma transferencia");
@@ -33,6 +32,7 @@ namespace Bank.Controllers
             }
             Console.WriteLine("Pressione qualquer tecla para prosseguir");
             Console.ReadKey();
+            MenuSavingAccount(clientAccount);
         }
         public static void RequestMonthlyPayment(SavingsAccount clientAccount)
         {

@@ -25,7 +25,7 @@ namespace BankAplicattion
                     RegisterCurrentAccount();
                     break;
                 case 2:
-                    // ANCHOR adicionar cadastro de conta poupança
+                    RegisterSavingsAccount();
                     break;
                 case 3:
                     Console.Clear();
@@ -40,9 +40,9 @@ namespace BankAplicattion
             Console.WriteLine("Pressione qualquer tecla para prosseguir");
             Console.ReadKey();
             Console.WriteLine("Favor imsira o numero da conta");
-            int number = Solicitor.GetValidInt();//ANCHOR tratar numeros negativos
+            int number = Solicitor.GetValidpositiveInt();
             Console.WriteLine("Favor insira sua agencia bancaria");
-            int bankBranch = Solicitor.GetValidInt();//ANCHOR tratar numeros negativoa
+            int bankBranch = Solicitor.GetValidpositiveInt();
             Console.WriteLine("Insira seu saldo");
             double balance = Solicitor.GetValidDouble();
             Console.WriteLine("Favor insira a taxa de manutenção da sua conta");
@@ -59,14 +59,14 @@ namespace BankAplicattion
             Console.WriteLine("Pressione qualquer tecla para prosseguir");
             Console.ReadKey();
             Console.WriteLine("Favor imsira o numero da conta");
-            int number = Solicitor.GetValidInt();//ANCHOR tratar numeros negativos
+            int number = Solicitor.GetValidpositiveInt();
             Console.WriteLine("Favor insira sua agencia bancaria");
-            int bankBranch = Solicitor.GetValidInt();//ANCHOR tratar numeros negativoa
+            int bankBranch = Solicitor.GetValidpositiveInt();
             Console.WriteLine("Insira seu saldo");
             double balance = Solicitor.GetValidDouble();
             Console.WriteLine("Favor insira a taxa de rendimentos da sua conta");
             double inconome = Solicitor.GetValidpositiveDouble();
-            CCheckingAccount.MenuCheckingAccount(new CheckingAccount(number.ToString(), bankBranch, balance, inconome)); 
+            CSavingsAccount.MenuSavingAccount(new SavingsAccount(number.ToString(), bankBranch, balance,inconome)); 
 
 
         }
