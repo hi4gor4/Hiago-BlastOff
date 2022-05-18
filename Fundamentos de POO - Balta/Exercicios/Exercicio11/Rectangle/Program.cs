@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UserSolicitor;
+using System;
 using RectangleEntities;
 
 namespace MyApp // Note: actual namespace depends on the project name.
@@ -14,9 +15,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.Clear();
             Console.WriteLine("Insira as medidas do local");
             Console.WriteLine("Favor insira o Comprimento do local");
-            double length = GetValidDouble();
+            double length = Solicitor.GetValidpositiveDouble();
             Console.WriteLine("Favor Insira a Largura do local");
-            double width = GetValidDouble();
+            double width = Solicitor.GetValidpositiveDouble();
             HandleOptions(new Floor(length,width));
 
         }
@@ -56,21 +57,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Menu();
             
         }
-        static double GetValidDouble(){
-            double value = 0;
-            try{
-                value = double.Parse(Console.ReadLine());
-            }catch{
-                NotifyInvalidValue();
-                return GetValidDouble();
-            }
-            if(value>0){
-                return value;
-            }else{
-                NotifyInvalidValue();
-                return GetValidDouble();
-            }
-        }
+        
         static short GetValidShort(){
             short value = 0;
             try{
@@ -90,16 +77,16 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static Tile RegisterTile(){
             Console.Clear();
             Console.WriteLine("Favor insira o cumprimento do piso");
-            double length = GetValidDouble();
+            double length = Solicitor.GetValidpositiveDouble();
             Console.WriteLine("Favor Insira a Largura do piso");
-            double width = GetValidDouble();
+            double width = Solicitor.GetValidpositiveDouble();
             return new Tile(length, width);
 
         }
         static BaseBoard RegisterBaseboard(){
             Console.Clear();
             Console.WriteLine("Favor insira o cumprimento do Rodapé");
-            double length = GetValidDouble();
+            double length = Solicitor.GetValidpositiveDouble();
             return new BaseBoard(length);
 
         }
@@ -111,3 +98,5 @@ namespace MyApp // Note: actual namespace depends on the project name.
         }
     }
 }
+
+//ANCHOR Colocar opções de consulta de area e de perimetro e tratar erros
