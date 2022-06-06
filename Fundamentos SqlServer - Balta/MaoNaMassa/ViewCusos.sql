@@ -1,5 +1,7 @@
 USE [Balta]
-CREATE OR ALTER VIEW vwCourses AS
+
+
+
 SELECT
     [Course].[Id],
     [Course].[Tag],
