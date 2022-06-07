@@ -55,6 +55,55 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     category.Featured
                 });
         }
+        static void CreateManyCategories(SqlConnection connection)
+        {
+            var category = new Category();
+            category.Id = Guid.NewGuid();
+            category.Title = "Mqtt";
+            category.Url = "www.nada.com";
+            category.Description = "Categoria destinada a serviços do AWS";
+            category.Order = 8;
+            category.Summary = "AWS Cloud";
+            category.Featured = false;
+            var category2 = new Category();
+            category2.Id = Guid.NewGuid();
+            category2.Title = "Mqtt ewrfg";
+            category2.Url = "www.nada.com";
+            category2.Description = "Categoria destinada a serviços do AWS";
+            category2.Order = 8;
+            category2.Summary = "AWS Cloud";
+            category2.Featured = false;
+            var insert = @"INSERT INTO 
+                [Category] 
+            VALUES(
+                @Id,
+                @Title,
+                @Url,
+                @Summary,
+                @Order,
+                @Description,
+                @Featured)";
+            var rows = connection.Execute(insert, new[]{
+                new{
+                    category.Id,
+                    category.Title,
+                    category.Url,
+                    category.Summary,
+                    category.Order,
+                    category.Description,
+                    category.Featured
+                },
+                new{
+                    category2.Id,
+                    category2.Title,
+                    category2.Url,
+                    category2.Summary,
+                    category2.Order,
+                    category2.Description,
+                    category2.Featured
+                }
+                });
+        }
         static void UpdateCategory(SqlConnection connection)
         {
             var UpdateQuery = "Update [Category] SET [Title] = @title WHERE [Id] = @id";
