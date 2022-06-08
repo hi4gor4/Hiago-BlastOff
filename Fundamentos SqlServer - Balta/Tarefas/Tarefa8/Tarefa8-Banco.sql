@@ -29,3 +29,4 @@ CREATE TABLE compra (
     pagamento FLOAT
 
 );
+

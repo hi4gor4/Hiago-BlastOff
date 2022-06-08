@@ -126,4 +126,4 @@ CREATE TABLE Alunos
   
   SELECT COUNT(MAT) 
   FROM Alunos 
-  WHERE Cidade != 'Natal'
+  WHERE Cidade <> 'Natal'
