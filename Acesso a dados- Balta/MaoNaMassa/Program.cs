@@ -22,7 +22,7 @@ namespace Blog
                 var users = connection.GetAll<User>();
                 foreach(var user in users)
                 {
-                    Console.WriteLine(user.Id);
+                    Console.WriteLine(user.Bio);
                 }
             }
         }
@@ -67,5 +67,18 @@ namespace Blog
 
             }
         }
+        public static void DeleteUser()
+        {
+            
+
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                var user = connection.Get<User>(1);
+                connection.Delete<User>(user);
+                Console.WriteLine("Cadastro Atualizado");
+
+            }
+        }
+
     }
 }
