@@ -162,5 +162,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
             });
             Console.WriteLine($"CCategoria inserida: {id}");
         }
+        static void ReadView(SqlConnection connection)
+        {
+            var sql = "SELECT * FROM [vwCourses]";
+            var courses = connection.Query(sql);
+
+            foreach (var item in courses)
+            {
+                Console.WriteLine($"{item.Id} - {item.Title}");
+            }
+        }
     }
 }
