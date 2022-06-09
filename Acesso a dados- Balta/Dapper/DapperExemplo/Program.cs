@@ -172,5 +172,72 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine($"{item.Id} - {item.Title}");
             }
         }
+        static void OneToOne(SqlConnection connection)
+        {
+            var sql = @"
+                SELECT 
+                    * 
+                FROM 
+                    [CareerItem] 
+                INNER JOIN 
+                    [Course] ON [CareerItem].[CourseId] = [Course].[Id]";
+
+            var items = connection.Query<CareerItem, Course, CareerItem>(
+                sql,
+                (careerItem, course) =>
+                {
+                    careerItem.Course = course;
+                    return careerItem;
+                }, splitOn: "Id");
+
+            foreach (var item in items)
+            {
+                Console.WriteLine($"{item.Title} - Curso: {item.Course.Title}");
+            }
+        }
+        static void OneToMany(SqlConnection connection)
+        {
+            var sql = @"
+                SELECT 
+                    [Career].[Id],
+                    [Career].[Title],
+                    [CareerItem].[CareerId],
+                    [CareerItem].[Title]
+                FROM 
+                    [Career] 
+                INNER JOIN 
+                    [CareerItem] ON [CareerItem].[CareerId] = [Career].[Id]
+                ORDER BY
+                    [Career].[Title]";
+
+            var careers = new List<Career>();
+            var items = connection.Query<Career, CareerItem, Career>(
+                sql,
+                (career, item) =>
+                {
+                    var car = careers.Where(x => x.Id == career.Id).FirstOrDefault();
+                    if (car == null)
+                    {
+                        car = career;
+                        car.Items.Add(item);
+                        careers.Add(car);
+                    }
+                    else
+                    {
+                        car.Items.Add(item);
+                    }
+
+                    return career;
+                }, splitOn: "CareerId");
+
+            foreach (var career in careers)
+            {
+                Console.WriteLine($"{career.Title}");
+                foreach (var item in career.Items)
+                {
+                    Console.WriteLine($" - {item.Title}");
+                }
+            }
+        }
     }
 }
