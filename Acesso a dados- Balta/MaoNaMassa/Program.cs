@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using Blog.Models;
+using Blog.Repositories;
 using Dapper.Contrib.Extensions;
 
 namespace Blog
@@ -17,9 +18,8 @@ namespace Blog
 
         public static void ReadUsers()
         {
-            using (var connection = new SqlConnection(CONNECTION_STRING ))
-            {
-                var users = connection.GetAll<User>();
+                var repositorie = new UserRepository();
+                var users = repositorie.ReadUsers(CONNECTION_STRING);
                 foreach(var user in users)
                 {
                     Console.WriteLine(user.Bio);
