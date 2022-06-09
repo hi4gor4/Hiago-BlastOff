@@ -10,6 +10,8 @@ namespace Blog
         static void Main(string[] args)
         {
             Console.WriteLine("Hello Word");
+            CreateUser();
+            ReadUsers();
         }
 
         public static void ReadUsers()
@@ -21,6 +23,26 @@ namespace Blog
                 {
                     Console.WriteLine(user.Email);
                 }
+            }
+        }
+
+        public static void CreateUser()
+        {
+            var user = new User()
+            {
+                Bio = "Equipe Toodoo",
+                Email = "hiago23rangel@gmail.com",
+                Image = "www.dwf.com",
+                Name = "Equipe Blastoof",
+                PasswordHash = "HASH",
+                Slug = "equipe-toodoo-blastoff"
+
+            };
+
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Insert<User>(user);
+                Console.WriteLine("Cadastro Efetuado");
             }
         }
     }
