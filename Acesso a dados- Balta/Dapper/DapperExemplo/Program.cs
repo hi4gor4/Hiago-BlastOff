@@ -113,5 +113,20 @@ namespace MyApp // Note: actual namespace depends on the project name.
             });
             Console.WriteLine("registros atualizados");
         }
+        static void ExecuteReadProcedure(SqlConnection connection)
+        {
+            var procedure = "[spGetCourseByCategory]";
+            var parames = new = {CategoryId = "5d8cf24e-e717-9a02-2443-01b300000000"};
+            var courses =  connection.Query(
+                procedure,
+                parames,
+                commandType: System.Data.CommandType.StoredProcedure
+            );
+            foreach (var item in courses)
+            {
+                Console.WriteLine(item.Id);
+            }
+
+        }
     }
 }
