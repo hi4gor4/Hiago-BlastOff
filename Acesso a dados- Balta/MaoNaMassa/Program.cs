@@ -10,7 +10,8 @@ namespace Blog
         static void Main(string[] args)
         {
             Console.WriteLine("Hello Word");
-            CreateUser();
+            //CreateUser();
+            UpdateUser();
             ReadUsers();
         }
 
@@ -21,7 +22,7 @@ namespace Blog
                 var users = connection.GetAll<User>();
                 foreach(var user in users)
                 {
-                    Console.WriteLine(user.Email);
+                    Console.WriteLine(user.Id);
                 }
             }
         }
@@ -35,7 +36,7 @@ namespace Blog
                 Image = "www.dwf.com",
                 Name = "Equipe Blastoof",
                 PasswordHash = "HASH",
-                Slug = "equipe-toodoo-blastoff"
+                Slug = "equipe-toodoo-blastoff2"
 
             };
 
@@ -43,6 +44,27 @@ namespace Blog
             {
                 connection.Insert<User>(user);
                 Console.WriteLine("Cadastro Efetuado");
+            }
+        }
+        public static void UpdateUser()
+        {
+            var user = new User()
+            {
+                Id = 1,
+                Bio = "Equipe Toodoo 2022",
+                Email = "hiago23rangel@gmail.com",
+                Image = "www.dwf.com",
+                Name = "Equipe Blastoof",
+                PasswordHash = "HASH",
+                Slug = "equipe-toodoo-blastoff2"
+
+            };
+
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Update<User>(user);
+                Console.WriteLine("Cadastro Atualizado");
+
             }
         }
     }
