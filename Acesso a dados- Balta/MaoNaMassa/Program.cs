@@ -1,84 +1,80 @@
-﻿using System.Data.SqlClient;
+﻿using System;
 using Blog.Models;
 using Blog.Repositories;
-using Dapper.Contrib.Extensions;
+using Microsoft.Data.SqlClient;
 
 namespace Blog
 {
     class Program
     {
-        private const string  CONNECTION_STRING =  @"Server=localhost,1433;Database=Blog;User ID=sa;Password=1q2w3e4r@#$";
+        private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;User ID=sa;Password=1q2w3e4r@#$";
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Word");
-            //CreateUser();
-            UpdateUser();
-            ReadUsers();
+            using var connection = new SqlConnection(CONNECTION_STRING);
+            var repository = new Repository<User>(connection);
+
+            // CreateUser(repository);
+            // UpdateUser(repository);
+            // DeleteUser(repository);
+            // ReadUser(repository);
+            // ReadUsers(repository);
+            ReadWithRoles(connection);
         }
 
-        public static void ReadUsers()
+        private static void CreateUser(Repository<User> repository)
         {
-                var repositorie = new UserRepository();
-                var users = repositorie.ReadUsers(CONNECTION_STRING);
-                foreach(var user in users)
-                {
-                    Console.WriteLine(user.Bio);
-                }
-            }
-        }
-
-        public static void CreateUser()
-        {
-            var user = new User()
+            var user = new User
             {
-                Bio = "Equipe Toodoo",
-                Email = "hiago23rangel@gmail.com",
-                Image = "www.dwf.com",
-                Name = "Equipe Blastoof",
-                PasswordHash = "HASH",
-                Slug = "equipe-toodoo-blastoff2"
-
+                Bio = "8x Microsoft MVP",
+                Email = "andre@balta.io",
+                Image = "https://balta.io/andrebaltieri.jpg",
+                Name = "André Baltieri",
+                Slug = "andre-baltieri",
+                PasswordHash = Guid.NewGuid().ToString()
             };
 
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                connection.Insert<User>(user);
-                Console.WriteLine("Cadastro Efetuado");
-            }
+            repository.Create(user);
         }
-        public static void UpdateUser()
+
+        private static void ReadUsers(Repository<User> repository)
         {
-            var user = new User()
-            {
-                Id = 1,
-                Bio = "Equipe Toodoo 2022",
-                Email = "hiago23rangel@gmail.com",
-                Image = "www.dwf.com",
-                Name = "Equipe Blastoof",
-                PasswordHash = "HASH",
-                Slug = "equipe-toodoo-blastoff2"
-
-            };
-
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                connection.Update<User>(user);
-                Console.WriteLine("Cadastro Atualizado");
-
-            }
+            var users = repository.Read();
+            foreach (var item in users)
+                Console.WriteLine(item.Email);
         }
-        public static void DeleteUser()
+
+        private static void ReadUser(Repository<User> repository)
         {
-            
-
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                var user = connection.Get<User>(1);
-                connection.Delete<User>(user);
-                Console.WriteLine("Cadastro Atualizado");
-
-            }
+            var user = repository.Read(2);
+            Console.WriteLine(user?.Email);
         }
 
+        private static void UpdateUser(Repository<User> repository)
+        {
+            var user = repository.Read(2);
+            user.Email = "hello@balta.io";
+            repository.Update(user);
+
+            Console.WriteLine(user?.Email);
+        }
+
+        private static void DeleteUser(Repository<User> repository)
+        {
+            var user = repository.Read(2);
+            repository.Delete(user);
+        }
+
+        private static void ReadWithRoles(SqlConnection connection)
+        {
+            var repository = new UserRepository(connection);
+            var users = repository.ReadWithRole();
+
+            foreach (var user in users)
+            {
+                Console.WriteLine(user.Email);
+                foreach (var role in user.Roles) Console.WriteLine($" - {role.Slug}");
+            }
+        }
     }
 }
