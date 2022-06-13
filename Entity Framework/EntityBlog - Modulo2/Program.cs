@@ -10,22 +10,33 @@ namespace EntityBlog
         {
             using(var context = new BlogDataContext())
             {
-                // var adtag = new Tag{ Name= ".Net", Slug= "/net" };
-                // context.Tags.Add(adtag);
-                // context.SaveChanges();
-                // var tag = context.Tags.FirstOrDefault(x=> x.Id ==1);
-                // tag.Name = "Entity";
-                // context.Update(tag);
-                // context.Remove(tag);
-                // context.SaveChanges();
-                var tags = context
-                .Tags
-                .ToList();
-                foreach(var tag in tags)//a execução só acontece quando é usado
+                var user = new User
                 {
-                    Console.WriteLine(tag.Name);
-                }
+                    Name = "Hiago rRangel",
+                    Slug = "hiagora",
+                    Email = "hiago.toodoo",
+                    Bio = "blastofer",
+                    Image = "https://goo.com",
+                    PasswordHash = "123098457"
+                };
+                
+                var category = new Category {Name = "Backend", Slug = "backend"};
+                
+                var post = new Post
+                {
+                    Author = user,
+                    Category = category,
+                    Body = "<p>Hello world</p>",
+                    Slug = "comecando-com-ef-core",
+                    Summary = "Neste artigo vamos aprender EF core",
+                    Title = "Começando com EF Core",
+                    CreateDate = DateTime.Now,
+                    LastUpdateDate = DateTime.Now,
+                };
+                
+                context.Posts.Add(post); 
+                context.SaveChanges();
+            }
             }
         }
     }
-}

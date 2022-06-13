@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityBlog.Models
 {
-    [Table("Categoy")]
+    [Table("Category")]
     public class Category
     {
         [Key]
