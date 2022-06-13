@@ -1,4 +1,4 @@
-namespace ENtityBlog.Models
+namespace EntityBlog.Models
 {
     public class User
     {
