@@ -20,5 +20,8 @@ namespace EntityBlog.Models
         public int AuthorId { get; set; }
         public User Author { get; set; }//Propriedade de navegação
 
+        public List<Tag> Tags { get; set; }
+
+
     }
 }
