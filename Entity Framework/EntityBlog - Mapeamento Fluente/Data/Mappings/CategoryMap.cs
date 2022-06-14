@@ -28,6 +28,8 @@ namespace EntityBlog.Mappings
                 .HasColumnName("VARCHAR")
                 .HasMaxLength(80);
             
+            builder.HasIndex(x=> x.Slug, "IX_Category_Slug")
+                .IsUnique();
         }
     }
 }
