@@ -22,7 +22,11 @@ namespace EntityBlog.Mappings
                 .HasColumnType("SMALLDATETIME")
                 .HasMaxLength(60)
                 .HasDefaultValueSql("GETDATE()");
-
+            
+            builder.HasOne(x=>x.Author)
+                .WithMany(x => x.Posts)
+                .HasConstraintName("Fk_Post_Author")
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }
