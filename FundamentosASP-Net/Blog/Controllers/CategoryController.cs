@@ -35,9 +35,22 @@ namespace Blog.Controllers
             [FromServices]BlogDataContext context 
         )
         {
-            await context.Categories.AddAsync(model);
-            await context.SaveChangesAsync();
-
+            try
+            {
+                await context.Categories.AddAsync(model);
+                await context.SaveChangesAsync();
+    
+            }
+            catch (DbUpdateException ex)
+            {
+                return BadRequest("Não foi possivel incluir a categoria");
+                
+            }
+            catch (Exception ex )
+            {
+                return StatusCode(500, "Falha interna no servidor");
+            }
+            
             return Created($"v1/categories/{model.Id}", model);
         }
 
